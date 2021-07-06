@@ -18,7 +18,7 @@ function makeBook(title, author, year, isCompleted) {
   const wordContainer = document.createElement("article");
   const buttonContainer = document.createElement("div");
   const container = document.createElement("div");
-  container.classList.add("book_list", "fade-in");
+  container.classList.add("book_list", "fade-in"); //fade-in for animation
   wordContainer.classList.add("book_item");
   buttonContainer.classList.add("action");
 
@@ -101,12 +101,17 @@ function bookIsCompleted(bookElement) {
   newBook[BOOK_ITEM_ID] = book.id;
 
   completeBook.append(newBook);
-  bookElement.remove();
-
-  updateDataToStorage();
 
   //Book Counter
   incrementBookCount();
+
+  //Animation
+  bookElement.classList.add("fall");
+  bookElement.addEventListener("animationend", function () {
+    bookElement.remove();
+  });
+
+  updateDataToStorage();
 }
 
 function bookUndoCompleted(bookElement) {
@@ -126,22 +131,28 @@ function bookUndoCompleted(bookElement) {
   newBook[BOOK_ITEM_ID] = book.id;
 
   incompleteBook.append(newBook);
-  bookElement.remove();
-
-  updateDataToStorage();
 
   //Book Counter
   decrementBookCount();
 
-  //Fall Transition
+  //Animation
+  bookElement.classList.add("fall");
+  bookElement.addEventListener("animationend", function () {
+    bookElement.remove();
+  });
+
+  updateDataToStorage();
 }
 
 function bookRemove(bookElement) {
   if (confirm("Apakah yakin ingin menghapus buku?")) {
     const bookPosition = findIndex(bookElement[BOOK_ITEM_ID]);
     books.splice(bookPosition, 1);
+    bookElement.classList.add("fall");
+    bookElement.addEventListener("animationend", function () {
+      bookElement.remove();
+    });
 
-    bookElement.remove();
     updateDataToStorage();
   }
 }
