@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>khelli'07 Bookshelf App</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="web-head">khelli07's Bookshelf App</h1>
+    </header>
+    <main>
+      <div class="main-container">
+        <section class="input_section">
+          <h2>Add New Books Here!</h2>
+          <form id="inputBook">
+            <div class="input">
+              <label for="inputBookTitle">Book Title<br /></label>
+              <input
+                id="inputBookTitle"
+                type="text"
+                required
+                placeholder="e.g. Harry Potter"
+              />
+            </div>
+            <div class="input">
+              <label for="inputBookAuthor">Author<br /></label>
+              <input
+                id="inputBookAuthor"
+                type="text"
+                required
+                placeholder="e.g. JK Rowling"
+              />
+            </div>
+            <div class="input">
+              <label for="inputBookYear">Year Published<br /></label>
+              <input
+                id="inputBookYear"
+                type="number"
+                required
+                placeholder="e.g. 1997"
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                maxlength="4"
+              />
+            </div>
+            <div class="input_inline">
+              <label for="inputBookIsComplete">Finished the book, yet? </label>
+              <input id="inputBookIsComplete" type="checkbox" />
+            </div>
+            <button id="bookSubmit" type="submit">ADD BOOK TO SHELF</button>
+          </form>
+        </section>
+
+        <aside class="app-board">
+          <img src="./assets/read-book.svg" alt="reading book vector" />
+          <section class="search_section">
+            <h2>Search book title:</h2>
+            <form id="searchBook">
+              <input
+                id="searchBookTitle"
+                type="text"
+                placeholder="Wanna find something?"
+              />
+              <button id="searchSubmit" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </form>
+            <h3>The more you read, the more you know.</h3>
+          </section>
+        </aside>
+      </div>
+
+      <section class="book_shelf unread">
+        <h2>Unread Books List</h2>
+        <div id="incompleteBookList" class="split">
+          <!-- <div class="book_list">
+            <article class="book_item">
+              <h3>Harry Potter: Ayah Mengapa Aku Berbeda</h3>
+              <p>Authored by JK Rowling, published in 1997.</p>
+            </article>
+            <div class="action">
+              <button class="blue-check"></button>
+              <button class="red-trash"></button>
+            </div>
+          </div> -->
+        </div>
+      </section>
+
+      <section class="book_shelf read">
+        <h2>Finished Book List</h2>
+
+        <div id="completeBookList" class="split">
+          <!-- <div class="book_list">
+            <article class="book_item">
+              <h3>Harry Potter: Ayah Mengapa Aku Berbeda</h3>
+              <p>Authored by JK Rowling, published in 1997.</p>
+            </article>
+            <div class="action">
+              <button class="blue-undo"></button>
+              <button class="red-store"></button>
+            </div>
+          </div> -->
+        </div>
+      </section>
+
+      <section class="appreciation">
+        <h3 class="book-count">Book finished over the last 1 minute:</h3>
+        <p id="count"></p>
+        <h2>That's a good progress. Good job, keep reading!</h2>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Made to fulfill Dicoding Front-End Web Submission by Maria Khelli &#169;
+        2021
+      </p>
+    </footer>
+
+    <script src="js/data.js" type="text/javascript"></script>
+    <script src="js/script.js" type="text/javascript"></script>
+    <script src="js/dom.js" type="text/javascript"></script>
+    <script src="js/added_features.js" type="text/javascript"></script>
+  </body>
+</html>
