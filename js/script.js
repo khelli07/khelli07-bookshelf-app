@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if (isStorageExist()) {
     loadDataFromStorage();
   }
+
+  bookCounter(); //diperlukan untuk awal load browser
 });
 
 document.addEventListener("ondatasaved", () => {

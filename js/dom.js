@@ -42,6 +42,7 @@ function addBook() {
 
   if (isCompleted) {
     completeBook.append(book);
+    incrementBookCount();
   } else {
     incompleteBook.append(book);
   }
@@ -103,6 +104,9 @@ function bookIsCompleted(bookElement) {
   bookElement.remove();
 
   updateDataToStorage();
+
+  //Book Counter
+  incrementBookCount();
 }
 
 function bookUndoCompleted(bookElement) {
@@ -115,8 +119,8 @@ function bookUndoCompleted(bookElement) {
   const descLength = descText.length;
   const author = descText.substring(12, descLength - 19);
   const year = descText.substring(descLength - 4);
-  const newBook = makeBook(title, author, year, false);
 
+  const newBook = makeBook(title, author, year, false);
   const book = findBook(bookElement[BOOK_ITEM_ID]);
   book.isCompleted = false;
   newBook[BOOK_ITEM_ID] = book.id;
@@ -125,14 +129,21 @@ function bookUndoCompleted(bookElement) {
   bookElement.remove();
 
   updateDataToStorage();
+
+  //Book Counter
+  decrementBookCount();
+
+  //Fall Transition
 }
 
 function bookRemove(bookElement) {
-  const bookPosition = findIndex(bookElement[BOOK_ITEM_ID]);
-  books.splice(bookPosition, 1);
+  if (confirm("Apakah yakin ingin menghapus buku?")) {
+    const bookPosition = findIndex(bookElement[BOOK_ITEM_ID]);
+    books.splice(bookPosition, 1);
 
-  bookElement.remove();
-  updateDataToStorage();
+    bookElement.remove();
+    updateDataToStorage();
+  }
 }
 
 function refreshDataFromStorage() {
@@ -181,8 +192,15 @@ function createHideButton() {
 }
 
 function hideFinishedBook(bookElement) {
-  bookElement.style.display = "none";
-  const book = findBook(bookElement[BOOK_ITEM_ID]);
-  book.isHidden = true;
-  updateDataToStorage();
+  if (
+    confirm(
+      "Apakah Anda yakin untuk menghilangkan buku yang telah selesai? \
+      Buku yang telah dihilangkan akan terhapus di storage setelah 1 menit."
+    )
+  ) {
+    bookElement.style.display = "none";
+    const book = findBook(bookElement[BOOK_ITEM_ID]);
+    book.isHidden = true;
+    updateDataToStorage();
+  }
 }
