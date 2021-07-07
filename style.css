@@ -111,7 +111,7 @@ input[type="checkbox"] {
   border-radius: 3px;
   border: 2px solid #0087b1;
   background-color: white;
-  display: flex;
+  display: block;
 
   padding: 0;
   justify-content: space-around;
@@ -257,7 +257,7 @@ input[type="checkbox"]:checked:after {
 
 .split {
   border-top: 4vw solid white;
-  padding-top: 5vw;
+  padding-top: 1.5vw;
 }
 
 .book_list {
@@ -293,7 +293,6 @@ input[type="checkbox"]:checked:after {
   margin-right: 4vw;
   margin-left: 0;
   justify-content: space-around;
-  background-color: green;
   float: right;
   display: flex;
   flex-direction: column;
@@ -401,14 +400,14 @@ input[type="checkbox"]:checked:after {
 /* footer */
 footer p {
   margin-top: 8vw;
-  margin-bottom: 1vw;
+  margin-bottom: 1.5vw;
   text-align: center;
-  line-height: 2vw;
+  line-height: 2.25vw;
   font-size: 1.5vw;
   cursor: default;
 }
 
-/* Animation */
+/* Added features */
 .fade-in {
   opacity: 1;
   animation-name: fadeInOpacity;
@@ -445,4 +444,51 @@ footer p {
     opacity: 0;
     transform: translateX(10px);
   }
+}
+
+#incompleteShelf {
+  display: block;
+}
+
+#completeShelf {
+  display: block;
+}
+
+#toggle-incomplete,
+#toggle-complete {
+  position: relative;
+  margin-left: 90%;
+  margin-top: 1vw;
+  max-height: 2vw;
+  top: 0;
+  border: none;
+
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 2vw;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+#toggle-incomplete:before,
+#toggle-complete:before {
+  content: "\f0d7";
+}
+
+#toggle-incomplete {
+  color: #d10259;
+  transition-duration: 0.4s;
+}
+
+#toggle-incomplete:hover {
+  color: #8f1515;
+}
+
+#toggle-complete {
+  color: #00aa6d;
+  transition-duration: 0.4s;
+}
+
+#toggle-complete:hover {
+  color: #0b6947;
 }

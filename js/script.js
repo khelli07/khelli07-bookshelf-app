@@ -27,3 +27,5 @@ document.addEventListener("ondatasaved", () => {
 document.addEventListener("ondataloaded", () => {
   refreshDataFromStorage();
 });
+
+// document.cookie = "SameSite=None; Secure";
