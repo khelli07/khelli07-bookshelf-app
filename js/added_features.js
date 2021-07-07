@@ -66,14 +66,15 @@ function collapseDiv(elementId) {
 function buttonToggle(buttonId, elementId) {
   const button = document.getElementById(buttonId);
   const elementContainer = document.getElementById(elementId);
+  const child = document.getElementById("completeBookList");
 
   if ((elementContainer.style.display = "block")) {
     button.style.marginBottom = "2vw";
   }
 
   button.addEventListener("click", function () {
-    let toggle = button.classList.toggle("value");
-    if (toggle == false) {
+    let noToggle = button.classList.toggle("value");
+    if (noToggle) {
       elementContainer.style.display = "none";
       button.style.marginBottom = "0";
     } else {

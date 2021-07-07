@@ -123,6 +123,7 @@ input[type="checkbox"]:after {
   font-family: "Font Awesome 5 Free";
   font-weight: 600;
   font-size: 1.5vw;
+  padding-left: 0.2vw;
   content: "\f00c";
   color: white;
   display: none;
